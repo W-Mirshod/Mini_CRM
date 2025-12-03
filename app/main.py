@@ -49,15 +49,18 @@ class OpenGraphMiddleware(BaseHTTPMiddleware):
         
         # Generate meta tags
         base_url = f"{request.url.scheme}://{request.url.netloc}"
+        image_url = f"{base_url}/static/preview.png"
         meta_tags = f'''
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{request.url}">
     <meta property="og:title" content="Mini-CRM Lead Distribution System">
     <meta property="og:description" content="Professional lead distribution system for CRM operations. Distribute leads efficiently across multiple operators with customizable weights and real-time statistics.">
-    <meta property="og:image" content="{base_url}/static/preview.svg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image" content="{image_url}">
+    <meta property="og:image:secure_url" content="{image_url}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="860">
+    <meta property="og:image:height" content="942">
     <meta property="og:site_name" content="Mini-CRM">
 
     <!-- Twitter -->
@@ -65,7 +68,7 @@ class OpenGraphMiddleware(BaseHTTPMiddleware):
     <meta name="twitter:url" content="{request.url}">
     <meta name="twitter:title" content="Mini-CRM Lead Distribution System">
     <meta name="twitter:description" content="Professional lead distribution system for CRM operations. Distribute leads efficiently across multiple operators with customizable weights and real-time statistics.">
-    <meta name="twitter:image" content="{base_url}/static/preview.svg">
+    <meta name="twitter:image" content="{image_url}">
 '''
         
         # Insert before </head> or at the beginning if no </head>

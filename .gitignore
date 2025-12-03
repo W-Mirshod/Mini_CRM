@@ -175,6 +175,7 @@ htmlcov/
 
 # Development
 debug.log
+mini_crm.db
 
 # Production
 *.pid
