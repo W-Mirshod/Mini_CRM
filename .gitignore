@@ -165,11 +165,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# FastAPI specific
-# Static files
-staticfiles/
-static/
-
 # Alembic
 alembic/versions/*.pyc
 
