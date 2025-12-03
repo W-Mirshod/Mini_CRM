@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
+from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy import func
@@ -8,6 +9,8 @@ from .. import models, schemas, database
 router = APIRouter(
     tags=["view"],
 )
+
+templates = Jinja2Templates(directory="templates")
 
 @router.get("/leads/", response_model=List[schemas.Lead])
 async def read_leads(skip: int = 0, limit: int = 100, db: AsyncSession = Depends(database.get_db)):
@@ -41,3 +44,7 @@ async def get_stats(db: AsyncSession = Depends(database.get_db)):
         "by_operator": by_operator,
         "by_source": by_source
     }
+
+@router.get("/documentation/")
+async def documentation_page(request: Request):
+    return templates.TemplateResponse("docs.html", {"request": request})

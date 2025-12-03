@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}API Documentation - Mini-CRM Lead Distribution{% endblock %}
+
+{% block og_title %}API Documentation - Mini-CRM Lead Distribution System{% endblock %}
+
+{% block og_description %}Complete API reference for the Mini-CRM Lead Distribution system. Manage operators, sources, contacts, and view distribution statistics through our comprehensive REST API.{% endblock %}
+
+{% block content %}
+    <h2>📖 API Documentation</h2>
+    <p>Complete API reference for the Mini-CRM Lead Distribution system.</p>
+
+    <h3>Available Endpoints:</h3>
+
+    <h4>🔧 Operators Management</h4>
+    <ul>
+        <li><code>POST /operators/</code> - Create a new operator</li>
+        <li><code>GET /operators/</code> - List all operators</li>
+        <li><code>PATCH /operators/{id}</code> - Update operator settings</li>
+    </ul>
+
+    <h4>📡 Sources Management</h4>
+    <ul>
+        <li><code>POST /sources/</code> - Create a new lead source</li>
+        <li><code>POST /sources/{id}/weights</code> - Set operator weights for a source</li>
+    </ul>
+
+    <h4>👥 Contacts & Leads</h4>
+    <ul>
+        <li><code>POST /contacts/</code> - Register new contact (triggers distribution)</li>
+        <li><code>GET /leads/</code> - List all leads</li>
+    </ul>
+
+    <h4>📊 Analytics</h4>
+    <ul>
+        <li><code>GET /stats/</code> - View distribution statistics</li>
+    </ul>
+
+    <a href="/docs" class="api-link" target="_blank">🔗 Open Interactive API Docs</a>
+{% endblock %}
